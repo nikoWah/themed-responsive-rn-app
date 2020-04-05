@@ -1,6 +1,6 @@
 export enum ThemeScheme {
-  BLUE = 'Blue',
-  GREEN = 'Green',
+  Default = 'Default',
+  Another = 'Another',
 }
 
 const commons = {
@@ -10,7 +10,7 @@ const commons = {
 };
 
 export const themes = {
-  [ThemeScheme.BLUE]: {
+  [ThemeScheme.Default]: {
     primaryBackground: '#316ecf',
     primaryTextColor: '#ffffff',
     fontFamily: 'Courier',
@@ -22,7 +22,7 @@ export const themes = {
     footerBackground: '#CCC86F',
     ...commons,
   },
-  [ThemeScheme.GREEN]: {
+  [ThemeScheme.Another]: {
     primaryBackground: '#74ef7c',
     primaryTextColor: '#000000',
     fontFamily: 'Menlo',

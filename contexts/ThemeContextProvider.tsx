@@ -7,12 +7,12 @@ export type ThemeContextProps = {
 };
 
 export const ThemeContext = React.createContext<ThemeContextProps>({
-  theme: ThemeScheme.BLUE,
+  theme: ThemeScheme.Default,
   setTheme: () => {},
 });
 
 export const ThemeContextProvider = ({children}: {children: ReactElement}) => {
-  const [theme, setTheme] = useState(ThemeScheme.BLUE);
+  const [theme, setTheme] = useState(ThemeScheme.Default);
 
   return (
     <ThemeContext.Provider value={{theme, setTheme}}>
