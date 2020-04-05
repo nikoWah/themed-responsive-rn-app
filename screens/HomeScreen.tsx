@@ -67,10 +67,11 @@ const portrait = (theme: any) => ({
   text: {
     fontWeight: 'bold',
     color: theme.primaryTextColor,
+    fontFamily: theme.fontFamily,
     textAlign: 'center',
   },
   header: {
-    backgroundColor: '#4F5A27',
+    backgroundColor: theme.headerBackground,
     padding: 20,
   },
   body: {
@@ -82,26 +83,26 @@ const portrait = (theme: any) => ({
   },
   mainContent: {
     flex: 3,
-    backgroundColor: '#FCE0A7',
+    backgroundColor: theme.mainContentBackground,
   },
   mainSide: {
     flex: 1,
     flexDirection: 'row',
   },
   mainSideFirstChild: {
-    backgroundColor: '#68933B',
+    backgroundColor: theme.mainSideFirstChildBackground,
     flex: 1,
   },
   mainSideSecondChild: {
-    backgroundColor: '#948B76',
+    backgroundColor: theme.mainSideSecondChildBackground,
     flex: 1,
   },
   side: {
     flex: 3,
-    backgroundColor: '#F5D36A',
+    backgroundColor: theme.sideBackground,
   },
   footer: {
-    backgroundColor: '#CCC86F',
+    backgroundColor: theme.footerBackground,
     padding: 20,
     alignItems: 'center',
   },
@@ -122,10 +123,11 @@ const landscape = (theme: any) => ({
   text: {
     fontWeight: 'bold',
     color: theme.primaryTextColor,
+    fontFamily: theme.fontFamily,
     textAlign: 'center',
   },
   header: {
-    backgroundColor: '#4F5A27',
+    backgroundColor: theme.headerBackground,
     padding: 20,
   },
   body: {
@@ -137,26 +139,26 @@ const landscape = (theme: any) => ({
     flexDirection: 'row',
   },
   mainContent: {
-    backgroundColor: '#FCE0A7',
+    backgroundColor: theme.mainContentBackground,
     flex: 4,
   },
   mainSide: {
     flex: 1,
   },
   mainSideFirstChild: {
-    backgroundColor: '#68933B',
+    backgroundColor: theme.mainSideFirstChildBackground,
     flex: 1,
   },
   mainSideSecondChild: {
-    backgroundColor: '#948B76',
+    backgroundColor: theme.mainSideSecondChildBackground,
     flex: 1,
   },
   side: {
     flex: 1,
-    backgroundColor: '#F5D36A',
+    backgroundColor: theme.sideBackground,
   },
   footer: {
-    backgroundColor: '#CCC86F',
+    backgroundColor: theme.footerBackground,
     padding: 20,
     alignItems: 'center',
   },
