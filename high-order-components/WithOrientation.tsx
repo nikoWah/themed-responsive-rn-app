@@ -13,10 +13,13 @@ export const withOrientation = (Component: any) => {
   return (props: any) => {
     const [orientation, setOrientation] = useState(getOrientation());
 
+    const changeDimensionHandler = () => setOrientation(getOrientation());
+
     useEffect(() => {
-      Dimensions.addEventListener('change', () =>
-        setOrientation(getOrientation()),
-      );
+      Dimensions.addEventListener('change', changeDimensionHandler);
+      return () => {
+        Dimensions.removeEventListener('change', changeDimensionHandler);
+      };
     }, []);
 
     return <Component {...props} orientation={orientation} />;
