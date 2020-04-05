@@ -1,9 +1,22 @@
 import React, {ReactElement} from 'react';
-import { SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {withTheme} from '../high-order-components/WithTheme';
+import {withOrientation} from '../high-order-components/WithOrientation';
 
-const HomeComponent = ({theme}: {theme: any}): ReactElement => {
-  const styles = getThemedStyle(theme);
+const HomeComponent = ({
+  theme,
+  orientation,
+}: {
+  theme: any;
+  orientation: string;
+}): ReactElement => {
+  const styles = getThemedStyle(theme, orientation);
 
   return (
     <View style={styles.container}>
@@ -38,10 +51,13 @@ const HomeComponent = ({theme}: {theme: any}): ReactElement => {
     </View>
   );
 };
-export const HomeScreen = withTheme(HomeComponent);
+export const HomeScreen = withTheme(withOrientation(HomeComponent));
 
-const getThemedStyle = (theme: any) =>
-  StyleSheet.create(portrait(theme));
+const getThemedStyle = (theme: any, orientation: string) => {
+  const stylesheet: any =
+    orientation === 'portrait' ? portrait(theme) : landscape(theme);
+  return StyleSheet.create(stylesheet);
+};
 
 const portrait = (theme: any) => ({
   container: {
@@ -56,10 +72,9 @@ const portrait = (theme: any) => ({
   header: {
     backgroundColor: '#4F5A27',
     padding: 20,
-    height: '10%',
   },
   body: {
-    height: '80%',
+    flexGrow: 1,
   },
   main: {
     flex: 4,
@@ -89,7 +104,6 @@ const portrait = (theme: any) => ({
     backgroundColor: '#CCC86F',
     padding: 20,
     alignItems: 'center',
-    height: '10%',
   },
   button: {
     backgroundColor: theme.primaryBackground,
@@ -108,14 +122,14 @@ const landscape = (theme: any) => ({
   text: {
     fontWeight: 'bold',
     color: theme.primaryTextColor,
+    textAlign: 'center',
   },
   header: {
     backgroundColor: '#4F5A27',
     padding: 20,
-    height: '10%',
   },
   body: {
-    height: '80%',
+    flexGrow: 1,
     flexDirection: 'row',
   },
   main: {
@@ -145,7 +159,6 @@ const landscape = (theme: any) => ({
     backgroundColor: '#CCC86F',
     padding: 20,
     alignItems: 'center',
-    height: '10%',
   },
   button: {
     backgroundColor: theme.primaryBackground,
