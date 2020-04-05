@@ -1,20 +1,27 @@
 import {BottomTabBarProps} from '@react-navigation/bottom-tabs/lib/typescript/src/types';
 import {BottomTabBar} from '@react-navigation/bottom-tabs';
-import {theme} from '../themes/themes';
 import {StyleSheet} from 'react-native';
 import React from 'react';
+import {ThemeProps, withTheme} from '../high-order-components/WithTheme';
 
-export const CustomTabBar = (props: BottomTabBarProps) => (
-  <BottomTabBar
-    {...props}
-    activeTintColor={theme.primaryBackground}
-    labelStyle={style.label}
-  />
-);
+const CustomTabBarComponent = (props: BottomTabBarProps & ThemeProps) => {
+  const styles: any = getThemedStyle(props.theme);
+  const activeTintColor: string = props.theme.primaryBackground;
 
-const style = StyleSheet.create({
-  label: {
-    fontSize: theme.mediumFontSize,
-    fontFamily: theme.fontFamily,
-  },
-});
+  return (
+    <BottomTabBar
+      {...props}
+      activeTintColor={activeTintColor}
+      labelStyle={styles.label}
+    />
+  );
+};
+export const CustomTabBar = withTheme(CustomTabBarComponent);
+
+const getThemedStyle = (theme: any) =>
+  StyleSheet.create({
+    label: {
+      fontSize: theme.mediumFontSize,
+      fontFamily: theme.fontFamily,
+    },
+  });

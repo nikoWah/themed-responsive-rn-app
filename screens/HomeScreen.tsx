@@ -1,24 +1,28 @@
 import React, {ReactElement} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import {theme} from '../themes/themes';
+import {StyleSheet, Text, View} from 'react-native';
+import {withTheme} from '../high-order-components/WithTheme';
 
-export const HomeScreen = (): ReactElement => {
+const HomeComponent = ({theme}: {theme: any}): ReactElement => {
+  const styles = getThemedStyle(theme);
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Home!</Text>
     </View>
   );
 };
+export const HomeScreen = withTheme(HomeComponent);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: theme.primaryBackground,
-  },
-  text: {
-    fontWeight: 'bold',
-    color: theme.primaryTextColor,
-  },
-});
+const getThemedStyle = (theme: any) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: theme.primaryBackground,
+    },
+    text: {
+      fontWeight: 'bold',
+      color: theme.primaryTextColor,
+    },
+  });
